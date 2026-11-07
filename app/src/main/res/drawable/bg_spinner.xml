@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/>
+
+            <stroke
+                android:width="2dp"
+                android:color="#2563EB"/>
+
+            <corners android:radius="12dp"/>
+        </shape>
+    </item>
+
+    <!-- Flèche -->
+    <item
+        android:drawable="@drawable/ic_arrow_down"
+        android:gravity="right|center_vertical"
+        android:right="10dp"/>
+
+</layer-list>
