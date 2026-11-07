@@ -74,7 +74,8 @@
         android:background="@drawable/edittext_border"
         android:ems="10"
         android:hint="Exemple : 1990"
-        android:inputType="number" />
+        android:inputType="number"
+        android:maxLength="4"/>
     <!-- android:background="@drawable/edittext_border"  star hetheya pour appliquer la bordure 3la ey element -->
 
     <TextView
@@ -93,7 +94,8 @@
         android:background="@drawable/edittext_border"
         android:ems="10"
         android:hint="Exemple : 2050"
-        android:inputType="number" />
+        android:inputType="number"
+        android:maxLength="4"/>
 
     <TextView
         android:id="@+id/textView"
@@ -111,7 +113,8 @@
         android:background="@drawable/bg_spinner"
         android:paddingStart="12dp"
         android:paddingEnd="40dp"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:entries="@array/motifs_voyage"/>
 
     <Button
         android:id="@+id/button"
