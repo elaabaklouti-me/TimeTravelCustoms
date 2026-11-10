@@ -34,10 +34,16 @@ public class ResultActivity extends AppCompatActivity {
 
         // hne badalt loun l background wl message selon le resultat de approve
         if (approuve) {
-            layoutResult.setBackgroundColor(Color.parseColor("#2E7D32"));
+
+            layoutResult.setBackgroundResource(R.drawable.minimalist_light_blue_phone_wallpaper__1_);
+            tvMessage.setBackgroundResource(R.drawable.edittext_border);
+            tvMessage.setTextColor(Color.parseColor("#2563EB"));
             tvMessage.setText("Bon voyage " + nom);
         } else {
-            layoutResult.setBackgroundColor(Color.parseColor("#C62828"));
+
+            layoutResult.setBackgroundResource(R.drawable.t_l_charg___5_);
+            tvMessage.setBackgroundResource(R.drawable.box_refuse);
+            tvMessage.setTextColor(Color.parseColor("#DC2626"));
             tvMessage.setText(nom + " est en état d'arrestation temporelle");
         }
 
