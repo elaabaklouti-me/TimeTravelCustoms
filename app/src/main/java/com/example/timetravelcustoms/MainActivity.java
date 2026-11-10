@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         // lenna esta3mlt regx kima fl web bsh l'utilisateur yajjm yda5el ken des lettres alphabétiques
         if (!nom.matches("[\\p{L} '-]+")) {
-            Toast.makeText(this, "Le nom doit contenir uniquement des lettres", Toast.LENGTH_SHORT).show();
+            etNom.setError("Le nom doit contenir uniquement des lettres");
+            etNom.requestFocus();
             return;
         }
 
@@ -56,9 +57,17 @@ public class MainActivity extends AppCompatActivity {
         int anneeDestination;
             anneeNaissance = Integer.parseInt(naissanceTxt);
             anneeDestination = Integer.parseInt(destinationTxt);
+
         // controle de saisie 3al les années
-        if (anneeNaissance < 1900  || anneeDestination < 1900 ) {
-            Toast.makeText(this, "Années hors limites", Toast.LENGTH_SHORT).show();
+        if (anneeNaissance < 1900 ) {
+            etNaissance.setError("Année de naissance inférieur à 1990");
+            etNaissance.requestFocus();
+            return;
+        }
+
+        if (anneeDestination < 1900 ) {
+            etDestination.setError("Année de destination inférieur à 1990");
+            etDestination.requestFocus();
             return;
         }
 

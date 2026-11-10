@@ -1,24 +1,60 @@
 package com.example.timetravelcustoms;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class ResultActivity extends AppCompatActivity {
+
+    private View layoutResult;
+    private TextView tvMessage;
+    private Button btnNouveau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_result);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+
+        layoutResult = findViewById(R.id.layout_result_xx);
+        tvMessage = findViewById(R.id.message);
+        btnNouveau = findViewById(R.id.btn_voyageur);
+
+        // récupération du résultat booléenne elli ba3thetha la fonction envoyerVerdict ml act2
+        Intent intent = getIntent();
+        boolean approuve = intent.getBooleanExtra(
+                CleIntent.cle(CleIntent.MATRICULE, CleIntent.VERDICT), false);
+        String nom = intent.getStringExtra(
+                CleIntent.cle(CleIntent.MATRICULE, CleIntent.NOM_VOYAGEUR));
+
+        // hne badalt loun l background wl message selon le resultat de approve
+        if (approuve) {
+
+            layoutResult.setBackgroundResource(R.drawable.minimalist_light_blue_phone_wallpaper__1_);
+            tvMessage.setBackgroundResource(R.drawable.edittext_border);
+            tvMessage.setTextColor(Color.parseColor("#2563EB"));
+            tvMessage.setText("Bon voyage " + nom);
+        } else {
+
+            layoutResult.setBackgroundResource(R.drawable.t_l_charg___5_);
+            tvMessage.setBackgroundResource(R.drawable.box_refuse);
+            tvMessage.setTextColor(Color.parseColor("#DC2626"));
+            tvMessage.setText(nom + " est en état d'arrestation temporelle");
+        }
+
+        // Intent explicite yhezna men ResultActivity lil MainActivity
+        btnNouveau.setOnClickListener(v -> {
+            Intent retour = new Intent(ResultActivity.this, MainActivity.class);
+
+            //lenna sta3mlt flags bsh android yfassa5 les activitées eli mawjoudin w il lance task jdida elli hia act1 fer4a mn jdid
+            retour.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(retour);
+            finish();
         });
     }
 }
